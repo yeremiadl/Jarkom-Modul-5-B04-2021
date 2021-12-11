@@ -35,9 +35,10 @@ D. Tugas berikutnya adalah memberikan ip pada subnet Blueno, Cipher, Fukurou, da
 7. Karena kita memiliki 2 Web Server, Luffy ingin Guanhao disetting sehingga setiap request dari client yang mengakses DNS Server akan didistribusikan secara bergantian pada Jorge dan Maingate
 
 * Doriki
+```
 apt-get update
 apt-get install bind9 -y
-
+```
 * Jipangu
 ```apt-get update
 apt-get install -y isc-dhcp-server
