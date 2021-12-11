@@ -20,6 +20,9 @@ Keterangan :   Doriki adalah DNS Server
 
 
 B. Karena kalian telah belajar subnetting dan routing, Luffy ingin meminta kalian untuk membuat topologi tersebut menggunakan teknik CIDR atau VLSM. setelah melakukan subnetting, 
+Digunakan pembagian VLSM untuk subnetting, dengan hasil sebagai berikut:
+![image](https://user-images.githubusercontent.com/40772378/145681100-4f588038-abe4-4e25-afb3-6fba1a8cfc5c.png)
+
 
 C. Kalian juga diharuskan melakukan Routing agar setiap perangkat pada jaringan tersebut dapat terhubung.
 
