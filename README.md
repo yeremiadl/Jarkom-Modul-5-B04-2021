@@ -33,3 +33,67 @@ D. Tugas berikutnya adalah memberikan ip pada subnet Blueno, Cipher, Fukurou, da
 5. Akses dari subnet Blueno dan Cipher hanya diperbolehkan pada pukul 07.00 - 15.00 pada hari Senin sampai Kamis.Selain itu di reject
 6. Akses dari subnet Elena dan Fukuro hanya diperbolehkan pada pukul 15.01 hingga pukul 06.59 setiap harinya. Selain itu di reject
 7. Karena kita memiliki 2 Web Server, Luffy ingin Guanhao disetting sehingga setiap request dari client yang mengakses DNS Server akan didistribusikan secara bergantian pada Jorge dan Maingate
+
+* Doriki
+apt-get update
+apt-get install bind9 -y
+
+* Jipangu
+```apt-get update
+apt-get install -y isc-dhcp-server
+cp /root/dhcpd/dhcpd.conf /etc/dhcp/dhcpd.conf
+service isc-dhcp-server restart
+```
+
+* File dhcpd.conf Jipangu
+```
+subnet 10.9.7.0 netmask 255.255.255.128 {
+	range 10.9.7.2 10.9.7.126;
+	option routers 10.9.7.1;
+	option domain-name-servers 192.168.122.1;
+	default-lease-time 360; #6m
+	max-lease-time 720; #12m
+}
+
+subnet 10.9.0.0 netmask 255.255.252.0 {
+	range 10.9.0.2 10.9.3.254;
+	option routers 10.9.0.1;
+	option domain-name-servers 192.168.122.1;
+	default-lease-time 360; #6m
+	max-lease-time 720; #12m
+}
+
+subnet 10.9.4.0 netmask 255.255.254.0 {
+	range 10.9.4.2 10.9.5.254;
+	option routers 10.9.4.1;
+	option domain-name-servers 192.168.122.1;
+	default-lease-time 360; #6m
+	max-lease-time 720; #12m
+}
+
+subnet 10.9.6.0 netmask 255.255.255.0 {
+	range 10.9.6.2 10.9.6.254;
+	option routers 10.9.6.1;
+	option domain-name-servers 192.168.122.1;
+	default-lease-time 360; #6m
+	max-lease-time 720; #12m
+}
+
+
+# https://unix.stackexchange.com/a/294947 Thanks for the answer!
+subnet 10.9.7.128 netmask 255.255.255.248 {
+	option routers 10.9.7.129;
+}
+```
+* Jorge
+```
+apt-get update
+apt-get install -y apache2 && service apache2 restart
+```
+
+* Maingate
+```
+apt-get update
+apt-get install -y apache2 && service apache2 restart
+```
+
